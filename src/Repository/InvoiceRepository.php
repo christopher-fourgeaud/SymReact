@@ -20,6 +20,7 @@ class InvoiceRepository extends ServiceEntityRepository
         parent::__construct($registry, Invoice::class);
     }
 
+    // Permet de trouver le prochain chrono de facture
     public function findNextChrono(User $user)
     {
         try {
