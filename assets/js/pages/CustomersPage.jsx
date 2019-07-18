@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Pagination from "../components/Pagination";
 import CustomersAPI from "../services/customersAPI";
+import { Link } from "react-router-dom";
 
 const CustomersPage = props => {
   // Gestion des states avec Hooks
@@ -63,7 +64,12 @@ const CustomersPage = props => {
 
   return (
     <>
-      <h1>Liste des clients</h1>
+      <div className="d-flex mb-3 justify-content-between align-items-center">
+        <h1>Liste des clients</h1>
+        <Link to="/customers/new" className="btn btn-primary">
+          Créer un client
+        </Link>
+      </div>
       <div className="form-group">
         <input
           onChange={handleSearch}

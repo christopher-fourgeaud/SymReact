@@ -44,7 +44,7 @@ const Navbar = ({ history }) => {
           {(!isAuthenticated && (
             <>
               <li className="nav-item">
-                <a href="#" className="nav-link">
+                <a href="/#/register" className="nav-link">
                   Inscription
                 </a>
               </li>
