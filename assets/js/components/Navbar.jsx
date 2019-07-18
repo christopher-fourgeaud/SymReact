@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import AuthAPI from "../services/authAPI";
 import AuthContext from "../contexts/AuthContext";
+import { NavLink } from "react-router-dom";
 
 const Navbar = ({ history }) => {
   const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
@@ -13,9 +14,9 @@ const Navbar = ({ history }) => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a className="navbar-brand" href="#">
+      <NavLink className="navbar-brand" to="/">
         SymReact !
-      </a>
+      </NavLink>
       <button
         className="navbar-toggler"
         type="button"
@@ -28,30 +29,34 @@ const Navbar = ({ history }) => {
         <span className="navbar-toggler-icon" />
       </button>
       <div className="collapse navbar-collapse" id="navbarColor01">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <a className="nav-link" href="/#/customers">
-              Clients
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/#/invoices">
-              Factures
-            </a>
-          </li>
-        </ul>
+        {isAuthenticated && (
+          <>
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/customers">
+                  Clients
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/invoices">
+                  Factures
+                </NavLink>
+              </li>
+            </ul>
+          </>
+        )}
         <ul className="navbar-nav ml-auto">
           {(!isAuthenticated && (
             <>
               <li className="nav-item">
-                <a href="/#/register" className="nav-link">
+                <NavLink to="/register" className="nav-link">
                   Inscription
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a href="/#/login" className="btn btn-light">
+                <NavLink to="/#/login" className="btn btn-light">
                   Connexion
-                </a>
+                </NavLink>
               </li>
             </>
           )) || (
